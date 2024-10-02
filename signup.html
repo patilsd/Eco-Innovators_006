@@ -29,6 +29,7 @@
 </body>
 
 </html>
+<script src="secrete.js"></script>
 <script>
     document.querySelector("#signupForm").addEventListener("submit", signUp)
 
@@ -42,7 +43,8 @@
 
 
     const signupWithFetch = (email, password) => {
-        fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${secrete.firebaseApiKey}`, {
+        const secrete = getSecret();
+        fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${secrete.apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
