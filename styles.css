@@ -1,0 +1,349 @@
+/* Basic styles for layout and design */
+
+* {
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background: #121213;
+    display:grid;
+    place-items: center;
+}
+
+header{
+    position: relative;
+    width:85%;
+    height: 95%;
+    /* border: 1px solid #fff; */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header .menu_sidebar, .song_sidebar{
+    width: 25%;
+    height: 90%;
+    border: 1px solid #fff;
+    background: #111727;
+    box-shadow: 5px 0px 2px #090f1f;
+}
+
+header .song_sidebar{
+    width: 75%;
+    background: #0b1320;
+    
+}
+
+.search_bar {
+   
+    margin-bottom: 0px;
+}
+
+.search_bar input {
+    width: 100%;
+    padding: 10px;
+    background: #1c1f24;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    margin-right:50px;
+}
+
+
+
+header .master_play{
+    width: 100%;
+    height: 10%;
+    /* border: 1px solid #fff; */
+    background: #111727;
+    box-shadow: 0px 3px 8px #090f1f ;
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+header .menu_sidebar button{
+    margin:150px 100px;
+    font-weight: 500;
+}
+
+header .master_play .wave{
+    width: 30px;
+    height: 30px;
+    /* border: 1px solid #fff; */
+    padding-bottom: 5px;
+    display: flex;
+    align-items: flex-end;
+    margin-right: 10px;
+}
+
+header .master_play .wave .wave1{
+    width: 3px;
+    height: 10px;
+    background: #36e2ec;
+    padding-bottom: 5px;
+    margin-right: 3px;
+    border-radius: 10px 10px 0px 0px;
+    animation: unset;
+}
+
+header .master_play .wave .wave1:nth-child(2){
+    height: 13px;   
+    margin-right: 3.5px;
+    animation-delay: .4s;
+}
+
+header .master_play .wave .wave1:nth-child(3){
+    height: 8px;   
+    animation-delay: .8s;
+}
+
+header .master_play .active1 .wave1 {
+    
+    animation: wave .5s linear infinite;
+
+
+}
+
+header .master_play .active1 .wave1:nth-child(2){
+   
+    animation-delay: .4s;
+}
+
+header .master_play .active1 .wave1:nth-child(3){
+    height: 8px;   
+    animation-delay: .8s;
+}
+
+
+@keyframes wave {
+    0%{
+        height: 10px;
+    }
+    50%{
+        height: 15px;   
+    }
+    100%{
+        height: 10px;
+    }
+    
+}
+
+header .master_play img{
+    width: 35px;
+    height: 35px;
+}
+
+
+header .master_play h5{
+    width: 130px;
+    /* border: 1px solid #fff; */
+    margin-left: 17px;
+    color: #fff;
+    line-height: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+header .master_play h5 .subtitle{
+   font-size: 11px;
+   width: 100%;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+}
+
+header .master_play .icon{
+    display: flex;
+    font-size: 20px;
+    color: #fff;
+    margin: 0px 20px 0px 40px;
+    outline: none;
+    align-items: center;
+ }
+
+ header .master_play .icon i{
+    cursor: pointer;
+    outline:none;
+ }
+
+ header .master_play span{
+    color: #fff;
+    width: 32px;
+    /* border: 1px solid #fff; */
+    font-size: 11px;
+    font-weight: 400;
+ }
+
+ header .master_play #currentStart{
+    margin: 0px 0px 0px 20px;
+
+ }
+
+ header .master_play .bar{
+    position: relative;
+    width: 43%;
+    height: 2px;
+    background: rgb(105, 105, 170, .1);
+    margin: 0px 15px 0px 10px;
+ }
+
+ header .master_play .bar .bar2{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: #36e2ec;
+    top: 0;
+    transition: 1s linear;
+ }
+
+ header .master_play .bar .dot{
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #36e2ec;
+    border-radius: 50%;
+    left: 0%;
+    top: -1.5px;
+    transition: 1s linear;
+ }
+
+ header .master_play .bar .dot::before{
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #36e2ec;
+    border-radius:50%;
+    left: -7px;
+    top: -6.5px;
+    box-shadow: inset 0px 0px 3px #36e2ec;
+    
+ }
+
+ header .master_play .bar input{
+    position: absolute;
+    width: 100%;
+    top: -7px;
+    left: 0;
+    cursor: pointer;
+    z-index: 99999999999999999999999999;
+    opacity: 0;
+
+ }
+
+
+ header .master_play .vol{
+    position: relative;
+    width: 100px;
+    height: 2px;
+    background: rgb(105, 105, 170, .1);
+    margin-left: 50px;
+
+ }
+
+ header .master_play .vol i{
+    position: absolute;
+    color:#fff;
+    font-size: 25px;
+    top: -17px;
+    left: -30px;
+
+ }
+
+ header .master_play .vol input{
+    position: absolute;
+    width: 100%;
+    top: -6px;
+    left: 0;
+    cursor: pointer;
+    z-index: 9999999999999999999999;
+    opacity: 0;
+ }
+
+ header .master_play .vol .vol_bar{
+    position: absolute;
+    background: #36e2ec;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    transition: 1s linear;
+
+ }
+
+ header .master_play .vol .dot{
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #36e2ec;
+    border-radius: 50%;
+    left: 0%;
+    top: -1.5px;
+    transition: 1s linear;
+    
+}
+
+header .master_play .vol .dot::before{
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #36e2ec;
+    border-radius:50%;
+    left: -7px;
+    top: -6.5px;
+    box-shadow: inset 0px 0px 3px #36e2ec;
+}
+
+header .song_sidebar::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background:url('');
+    z-index: -1;
+}
+
+header .song_sidebar nav{
+    width: 90%;
+    height: 10%;
+    /* border: 1px solid #fff; */
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .song_sidebar nav ul{
+    display: flex;
+}
+
+header .song_sidebar nav ul li{
+    list-style: none;
+    position: relative;
+    font-size: 13px;
+    color: #4c5262;
+    margin-right: 25px;
+    cursor: pointer;
+    transition: .3s linear;
+}
+
+header .song_sidebar nav ul li:hover{
+    color: #fff;
+}
+
+header .song_sidebar nav ul li span{
+    position: absolute;
+    width: 100%;
+    height:2.5px;
+    background: #36e2ec;
+    bottom: -5px;
+    left: 0;
+    border-radius: 20px;
+}
