@@ -1,0 +1,1010 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="song.css" />
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: rgb(86, 14, 100);
+      }
+
+      li {
+        float: left;
+        color: white;
+      }
+
+      li a {
+        display: block;
+        text-align: center;
+        color: white;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover {
+        background-color: #443b3b;
+      }
+      li img {
+        border-radius: 50%;
+        height: 40%;
+        width: 40%;
+      }
+      #logout {
+        display: none;
+        color: white;
+      }
+      a {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="home.html"><img src="project.png" /></a>
+      </li>
+      <li id="login" style="display: none"><a href="login.html">Login</a></li>
+      <li id="signup" style="display: none">
+        <a href="signup.html">SignUp</a>
+      </li>
+      <li id="logout" onclick="logout_data()" style="display: block">
+        <a href="home.html" id="log" style="color: white">LogOut</a>
+      </li>
+    </ul>
+    <div id="songs">
+      <div>
+        <p>Death Bed</p>
+        <p>Powfu</p>
+        <img src="https://samplesongs.netlify.app/album-arts/death-bed.jpg" />
+        <br />
+        <i class="fa fa-play" aria-hidden="true" style="
+        font-size: xx-large;
+        padding-top: 23%;
+    "></i>
+        <!-- <audio controls="" class="audio_">
+          <source
+            src="https://samplesongs.netlify.app/Death%20Bed.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://samplesongs.netlify.app/Death%20Bed.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio> -->
+
+        <source src="https://samplesongs.netlify.app/Death%20Bed.mp3" />
+      </div>
+      <div>
+        <p>Bad Liar</p>
+        <p>Imagine Dragons</p>
+        <img src="https://samplesongs.netlify.app/album-arts/bad-liar.jpg" />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="https://samplesongs.netlify.app/Bad%20Liar.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://samplesongs.netlify.app/Bad%20Liar.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="https://samplesongs.netlify.app/Bad%20Liar.mp3" />
+      </div>
+      <div>
+        <p>Faded</p>
+        <p>Alan Walker</p>
+        <img src="https://samplesongs.netlify.app/album-arts/faded.jpg" />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="https://samplesongs.netlify.app/Faded.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://samplesongs.netlify.app/Faded.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="https://samplesongs.netlify.app/Faded.mp3" />
+      </div>
+      <div>
+        <p>Hate Me</p>
+        <p>Ellie Goulding</p>
+        <img src="https://samplesongs.netlify.app/album-arts/hate-me.jpg" />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="https://samplesongs.netlify.app/Hate%20Me.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://samplesongs.netlify.app/Hate%20Me.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="https://samplesongs.netlify.app/Hate%20Me.mp3" />
+      </div>
+      <div>
+        <p>Solo</p>
+        <p>Clean Bandit</p>
+        <img src="https://samplesongs.netlify.app/album-arts/solo.jpg" />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="https://samplesongs.netlify.app/Solo.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://samplesongs.netlify.app/Solo.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="https://samplesongs.netlify.app/Solo.mp3" />
+      </div>
+      <div>
+        <p>Without Me</p>
+        <p>Halsey</p>
+        <img src="https://samplesongs.netlify.app/album-arts/without-me.jpg" />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="https://samplesongs.netlify.app/Without%20Me.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://samplesongs.netlify.app/Without%20Me.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="https://samplesongs.netlify.app/Without%20Me.mp3" />
+      </div>
+      <div>
+        <p>Aayi Nai</p>
+        <p>Amit Bhatacharya</p>
+        <img
+          src="https://pagalfree.com/images/128Aayi%20Nai%20-%20Stree%202%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source src="./songs/AayiNai.mp3" type="audio/mpeg" />
+          <source src="./songs/AayiNai.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/AayiNai.mp3" />
+      </div>
+      <div>
+        <p>Mere Mehboob Mere Sanam</p>
+        <p>Javed Akhtar</p>
+        <img
+          src="https://pagalfree.com/images/128Mere%20Mehboob%20Mere%20Sanam%20-%20Bad%20Newz%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Mere Mehboob Mere Sanam - Bad Newz 128 Kbps.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Mere Mehboob Mere Sanam - Bad Newz 128 Kbps.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/Mere"
+          mehboob=""
+          mere=""
+          sanam=""
+          -=""
+          bad=""
+          newz=""
+          128=""
+          kbps.mp3=""
+        />
+      </div>
+      <div>
+        <p>Khudaya</p>
+        <p>Manoj Muntashir</p>
+        <img
+          src="https://pagalfree.com/images/128Khudaya%20-%20Sarfira%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Khudaya - Sarfira 128 Kbps.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Khudaya - Sarfira 128 Kbps.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/Khudaya" -="" sarfira="" 128="" kbps.mp3="" />
+      </div>
+      <div>
+        <p>Angaaron</p>
+        <p>Shreya Ghoshal</p>
+        <img
+          src="https://pagalfree.com/images/128Angaaron%20-%20Pushpa%202%20The%20Rule%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source src="./songs/Angaaron.mp3" type="audio/mpeg" />
+          <source src="./songs/Angaaron.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/Angaaron.mp3" />
+      </div>
+      <div>
+        <p>Aaj Ki Raat</p>
+        <p>Amit Bhatacharya</p>
+        <img
+          src="https://pagalfree.com/images/128Aaj%20Ki%20Raat%20-%20Stree%202%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Aaj Ki Raat - Stree 2 128 Kbps.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Aaj Ki Raat - Stree 2 128 Kbps.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/Aaj"
+          ki=""
+          raat=""
+          -=""
+          stree=""
+          2=""
+          128=""
+          kbps.mp3=""
+        />
+      </div>
+      <div>
+        <p>Agar Ho Tum</p>
+        <p>Jubin Nautiyal</p>
+        <img
+          src="https://pagalfree.com/images/128Agar%20Ho%20Tum%20-%20Mr.%20And%20Mrs.%20Mahi%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Agar Ho Tum - Mr. And Mrs. Mahi 128 Kbps.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Agar Ho Tum - Mr. And Mrs. Mahi 128 Kbps.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/Agar"
+          ho=""
+          tum=""
+          -=""
+          mr.=""
+          and=""
+          mrs.=""
+          mahi=""
+          128=""
+          kbps.mp3=""
+        />
+      </div>
+      <div>
+        <p>Pushpa</p>
+        <p>Mika singh</p>
+        <img
+          src="https://pagalfree.com/images/128Pushpa%20Pushpa%20-%20Pushpa%202%20The%20Rule%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source src="./songs/Pushpa Pushpa.mp3" type="audio/mpeg" />
+          <source src="./songs/Pushpa Pushpa.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/Pushpa" pushpa.mp3="" />
+      </div>
+      <div>
+        <p>Ghagra</p>
+        <p>Ila Arun</p>
+        <img
+          src="https://pagalfree.com/images/128Ghagra%20-%20Crew%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source src="./songs/Ghagra - Crew 128 Kbps.mp3" type="audio/mpeg" />
+          <source src="./songs/Ghagra - Crew 128 Kbps.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/Ghagra" -="" crew="" 128="" kbps.mp3="" />
+      </div>
+      <div>
+        <p>O mahi</p>
+        <p>Arijit Singh</p>
+        <img
+          src="https://www.pagalworld.com.sb/siteuploads/thumb/sft138/68671_1.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/O Mahi O Mahi(PagalWorld.com.sb).mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/O Mahi O Mahi(PagalWorld.com.sb).mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/O" mahi="" o="" mahi(pagalworld.com.sb).mp3="" />
+      </div>
+      <div>
+        <p>Millionaire</p>
+        <p>Honey Singh</p>
+        <img
+          src="https://www.pagalworld.com.sb/siteuploads/thumb/sft145/72038_4.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Millionaire(PagalWorld.com.sb).mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Millionaire(PagalWorld.com.sb).mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/Millionaire(PagalWorld.com.sb).mp3" />
+      </div>
+      <div>
+        <p>Tumhare Hi Rahenge Hum</p>
+        <p>Varun Jain</p>
+        <img
+          src="https://www.pagalworld.com.sb/siteuploads/thumb/sft144/71864_4.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Tumhare Hi Rahenge Hum(PagalWorld.com.sb).mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Tumhare Hi Rahenge Hum(PagalWorld.com.sb).mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/Tumhare"
+          hi=""
+          rahenge=""
+          hum(pagalworld.com.sb).mp3=""
+        />
+      </div>
+      <div>
+        <p>Khoobsurat</p>
+        <p>Vishal Mistra</p>
+        <img
+          src="https://www.pagalworld.com.sb/siteuploads/thumb/sft144/71884_4.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Khoobsurat(PagalWorld.com.sb).mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Khoobsurat(PagalWorld.com.sb).mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/Khoobsurat(PagalWorld.com.sb).mp3" />
+      </div>
+      <div>
+        <p>Gulabi Sadi</p>
+        <p>R Rathod</p>
+        <img
+          src="https://www.pagalworld.com.sb/siteuploads/thumb/sft142/70998_4.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Gulabi Sadi Ani Lali(PagalWorld.com.sb).mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Gulabi Sadi Ani Lali(PagalWorld.com.sb).mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/Gulabi"
+          sadi=""
+          ani=""
+          lali(pagalworld.com.sb).mp3=""
+        />
+      </div>
+      <div>
+        <p>Heeriye Heeriye Aa</p>
+        <p>Arijit Singh</p>
+        <img
+          src="https://www.pagalworld.com.sb/siteuploads/thumb/sft143/71197_4.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/_Heeriye Heeriye Aa(PagalWorld.com.sb).mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/_Heeriye Heeriye Aa(PagalWorld.com.sb).mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/_Heeriye"
+          heeriye=""
+          aa(pagalworld.com.sb).mp3=""
+        />
+      </div>
+      <div>
+        <p>Death Bed</p>
+        <p>Powfu</p>
+        <img src="https://samplesongs.netlify.app/album-arts/death-bed.jpg" />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="https://samplesongs.netlify.app/Death%20Bed.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://samplesongs.netlify.app/Death%20Bed.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="https://samplesongs.netlify.app/Death%20Bed.mp3" />
+      </div>
+      <div>
+        <p>Bad Liar</p>
+        <p>Imagine Dragons</p>
+        <img src="https://samplesongs.netlify.app/album-arts/bad-liar.jpg" />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="https://samplesongs.netlify.app/Bad%20Liar.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://samplesongs.netlify.app/Bad%20Liar.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="https://samplesongs.netlify.app/Bad%20Liar.mp3" />
+      </div>
+      <div>
+        <p>Faded</p>
+        <p>Alan Walker</p>
+        <img src="https://samplesongs.netlify.app/album-arts/faded.jpg" />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="https://samplesongs.netlify.app/Faded.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://samplesongs.netlify.app/Faded.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="https://samplesongs.netlify.app/Faded.mp3" />
+      </div>
+      <div>
+        <p>Hate Me</p>
+        <p>Ellie Goulding</p>
+        <img src="https://samplesongs.netlify.app/album-arts/hate-me.jpg" />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="https://samplesongs.netlify.app/Hate%20Me.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://samplesongs.netlify.app/Hate%20Me.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="https://samplesongs.netlify.app/Hate%20Me.mp3" />
+      </div>
+      <div>
+        <p>Solo</p>
+        <p>Clean Bandit</p>
+        <img src="https://samplesongs.netlify.app/album-arts/solo.jpg" />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="https://samplesongs.netlify.app/Solo.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://samplesongs.netlify.app/Solo.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="https://samplesongs.netlify.app/Solo.mp3" />
+      </div>
+      <div>
+        <p>Without Me</p>
+        <p>Halsey</p>
+        <img src="https://samplesongs.netlify.app/album-arts/without-me.jpg" />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="https://samplesongs.netlify.app/Without%20Me.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://samplesongs.netlify.app/Without%20Me.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="https://samplesongs.netlify.app/Without%20Me.mp3" />
+      </div>
+      <div>
+        <p>Aayi Nai</p>
+        <p>Amit Bhatacharya</p>
+        <img
+          src="https://pagalfree.com/images/128Aayi%20Nai%20-%20Stree%202%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Aayi Nai - Stree 2 128 Kbps.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Aayi Nai - Stree 2 128 Kbps.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/Aayi"
+          nai=""
+          -=""
+          stree=""
+          2=""
+          128=""
+          kbps.mp3=""
+        />
+      </div>
+      <div>
+        <p>Mere Mehboob Mere Sanam</p>
+        <p>Javed Akhtar</p>
+        <img
+          src="https://pagalfree.com/images/128Mere%20Mehboob%20Mere%20Sanam%20-%20Bad%20Newz%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Mere Mehboob Mere Sanam - Bad Newz 128 Kbps.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Mere Mehboob Mere Sanam - Bad Newz 128 Kbps.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/Mere"
+          mehboob=""
+          mere=""
+          sanam=""
+          -=""
+          bad=""
+          newz=""
+          128=""
+          kbps.mp3=""
+        />
+      </div>
+      <div>
+        <p>Khudaya</p>
+        <p>Manoj Muntashir</p>
+        <img
+          src="https://pagalfree.com/images/128Khudaya%20-%20Sarfira%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Khudaya - Sarfira 128 Kbps.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Khudaya - Sarfira 128 Kbps.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/Khudaya" -="" sarfira="" 128="" kbps.mp3="" />
+      </div>
+      <div>
+        <p>Angaaron</p>
+        <p>Shreya Ghoshal</p>
+        <img
+          src="https://pagalfree.com/images/128Angaaron%20-%20Pushpa%202%20The%20Rule%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source src="./songs/Angaaron.mp3" type="audio/mpeg" />
+          <source src="./songs/Angaaron.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/Angaaron.mp3" />
+      </div>
+      <div>
+        <p>Aaj Ki Raat</p>
+        <p>Amit Bhatacharya</p>
+        <img
+          src="https://pagalfree.com/images/128Aaj%20Ki%20Raat%20-%20Stree%202%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Aaj Ki Raat - Stree 2 128 Kbps.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Aaj Ki Raat - Stree 2 128 Kbps.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/Aaj"
+          ki=""
+          raat=""
+          -=""
+          stree=""
+          2=""
+          128=""
+          kbps.mp3=""
+        />
+      </div>
+      <div>
+        <p>Agar Ho Tum</p>
+        <p>Jubin Nautiyal</p>
+        <img
+          src="https://pagalfree.com/images/128Agar%20Ho%20Tum%20-%20Mr.%20And%20Mrs.%20Mahi%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Agar Ho Tum - Mr. And Mrs. Mahi 128 Kbps.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Agar Ho Tum - Mr. And Mrs. Mahi 128 Kbps.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/Agar"
+          ho=""
+          tum=""
+          -=""
+          mr.=""
+          and=""
+          mrs.=""
+          mahi=""
+          128=""
+          kbps.mp3=""
+        />
+      </div>
+      <div>
+        <p>Pushpa</p>
+        <p>Mika singh</p>
+        <img
+          src="https://pagalfree.com/images/128Pushpa%20Pushpa%20-%20Pushpa%202%20The%20Rule%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Pushpa Pushpa - Pushpa 2 The Rule 128 Kbps.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Pushpa Pushpa - Pushpa 2 The Rule 128 Kbps.mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/Pushpa"
+          pushpa=""
+          -=""
+          2=""
+          the=""
+          rule=""
+          128=""
+          kbps.mp3=""
+        />
+      </div>
+      <div>
+        <p>Ghagra</p>
+        <p>Ila Arun</p>
+        <img
+          src="https://pagalfree.com/images/128Ghagra%20-%20Crew%20128%20Kbps.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source src="./songs/Ghagra - Crew 128 Kbps.mp3" type="audio/mpeg" />
+          <source src="./songs/Ghagra - Crew 128 Kbps.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/Ghagra" -="" crew="" 128="" kbps.mp3="" />
+      </div>
+      <div>
+        <p>O mahi</p>
+        <p>Arijit Singh</p>
+        <img
+          src="https://www.pagalworld.com.sb/siteuploads/thumb/sft138/68671_1.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/O Mahi O Mahi(PagalWorld.com.sb).mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/O Mahi O Mahi(PagalWorld.com.sb).mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/O" mahi="" o="" mahi(pagalworld.com.sb).mp3="" />
+      </div>
+      <div>
+        <p>Millionaire</p>
+        <p>Honey Singh</p>
+        <img
+          src="https://www.pagalworld.com.sb/siteuploads/thumb/sft145/72038_4.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Millionaire(PagalWorld.com.sb).mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Millionaire(PagalWorld.com.sb).mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/Millionaire(PagalWorld.com.sb).mp3" />
+      </div>
+      <div>
+        <p>Tumhare Hi Rahenge Hum</p>
+        <p>Varun Jain</p>
+        <img
+          src="https://www.pagalworld.com.sb/siteuploads/thumb/sft144/71864_4.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Tumhare Hi Rahenge Hum(PagalWorld.com.sb).mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Tumhare Hi Rahenge Hum(PagalWorld.com.sb).mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/Tumhare"
+          hi=""
+          rahenge=""
+          hum(pagalworld.com.sb).mp3=""
+        />
+      </div>
+      <div>
+        <p>Khoobsurat</p>
+        <p>Vishal Mistra</p>
+        <img
+          src="https://www.pagalworld.com.sb/siteuploads/thumb/sft144/71884_4.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Khoobsurat(PagalWorld.com.sb).mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Khoobsurat(PagalWorld.com.sb).mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source src="./songs/Khoobsurat(PagalWorld.com.sb).mp3" />
+      </div>
+      <div>
+        <p>Gulabi Sadi</p>
+        <p>R Rathod</p>
+        <img
+          src="https://www.pagalworld.com.sb/siteuploads/thumb/sft142/70998_4.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/Gulabi Sadi Ani Lali(PagalWorld.com.sb).mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/Gulabi Sadi Ani Lali(PagalWorld.com.sb).mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/Gulabi"
+          sadi=""
+          ani=""
+          lali(pagalworld.com.sb).mp3=""
+        />
+      </div>
+      <div>
+        <p>Heeriye Heeriye Aa</p>
+        <p>Arijit Singh</p>
+        <img
+          src="https://www.pagalworld.com.sb/siteuploads/thumb/sft143/71197_4.jpg"
+        />
+        <br />
+        <audio controls="" class="audio_">
+          <source
+            src="./songs/_Heeriye Heeriye Aa(PagalWorld.com.sb).mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="./songs/_Heeriye Heeriye Aa(PagalWorld.com.sb).mp3"
+            type="audio/mp3"
+          />
+          Your browser does not support the audio element.
+        </audio>
+
+        <source
+          src="./songs/_Heeriye"
+          heeriye=""
+          aa(pagalworld.com.sb).mp3=""
+        />
+      </div>
+    </div>
+    <!-- Code injected by live-server -->
+    <script>
+      // <![CDATA[  <-- For SVG support
+      if ("WebSocket" in window) {
+        (function () {
+          function refreshCSS() {
+            var sheets = [].slice.call(document.getElementsByTagName("link"));
+            var head = document.getElementsByTagName("head")[0];
+            for (var i = 0; i < sheets.length; ++i) {
+              var elem = sheets[i];
+              var parent = elem.parentElement || head;
+              parent.removeChild(elem);
+              var rel = elem.rel;
+              if (
+                (elem.href && typeof rel != "string") ||
+                rel.length == 0 ||
+                rel.toLowerCase() == "stylesheet"
+              ) {
+                var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, "");
+                elem.href =
+                  url +
+                  (url.indexOf("?") >= 0 ? "&" : "?") +
+                  "_cacheOverride=" +
+                  new Date().valueOf();
+              }
+              parent.appendChild(elem);
+            }
+          }
+          var protocol =
+            window.location.protocol === "http:" ? "ws://" : "wss://";
+          var address =
+            protocol + window.location.host + window.location.pathname + "/ws";
+          var socket = new WebSocket(address);
+          socket.onmessage = function (msg) {
+            if (msg.data == "reload") window.location.reload();
+            else if (msg.data == "refreshcss") refreshCSS();
+          };
+          if (
+            sessionStorage &&
+            !sessionStorage.getItem("IsThisFirstTime_Log_From_LiveServer")
+          ) {
+            console.log("Live reload enabled.");
+            sessionStorage.setItem("IsThisFirstTime_Log_From_LiveServer", true);
+          }
+        })();
+      } else {
+        console.error(
+          "Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading."
+        );
+      }
+      // ]]>
+    </script>
+
+    <script src="home.js"></script>
+    <!-- <script src="song.js"></script> -->
+  </body>
+</html>
