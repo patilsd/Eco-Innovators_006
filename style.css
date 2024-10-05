@@ -60,6 +60,7 @@ ul div {
   display: none;
   color: white;
 }
+
 a {
   border-radius: 20px;
   background: transparent;
@@ -69,22 +70,33 @@ a {
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   color: white;
 }
+
 #pop {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-  -webkit-animation-name: fadeIn; /* Fade in the background */
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  -webkit-animation-name: fadeIn;
+  /* Fade in the background */
   -webkit-animation-duration: 0.4s;
   animation-name: fadeIn;
   animation-duration: 0.4s;
 }
+
 #content {
   font-weight: bold;
   position: fixed;
@@ -96,16 +108,14 @@ a {
   animation-name: slideIn;
   animation-duration: 0.4s;
   text-align: center;
-  padding-top: 40px;
-  padding-bottom: 30px;
 }
 
 #content img {
   border-radius: 50%;
-  padding: 5px;
-  height: 300px;
-  width: 300px;
+  height: 100px;
+  width: 100px;
 }
+
 #content button {
   cursor: pointer;
   background-color: rgb(125, 17, 134);
@@ -116,6 +126,7 @@ a {
   width: 60px;
   color: white;
 }
+
 #content audio {
   text-align: center;
 }
@@ -271,7 +282,8 @@ a {
 /* Small screens (phones) */
 @media (max-width: 768px) {
   .footer-upper {
-    flex-direction: column; /* Stack columns */
+    flex-direction: column;
+    /* Stack columns */
     text-align: center;
     padding: 20px;
   }
