@@ -1,302 +1,163 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Music Player - Home</title>
-  <script src="https://kit.fontawesome.com/0161e8f976.js" crossorigin="anonymous"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav {
-      background-color: #222;
-      padding: 15px;
-      text-align: center;
-    }
-
-    nav ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      display: inline-block;
-    }
-
-    nav ul li {
-      display: inline;
-      margin-right: 20px;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-    }
-
-    nav ul li a:hover {
-      text-decoration: underline;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .song-list, .playlist {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .song-card {
-      background-color: #222;
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      width: 200px;
-      cursor: pointer;
-    }
-
-    .song-card img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .song-card h3, .song-card p {
-      margin: 10px 0;
-    }
-
-    audio {
-      margin-top: 20px;
-      width: 100%;
-    }
-
-    .add-to-playlist {
-      background-color: #ff4757;
-      border: none;
-      color: white;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .add-to-playlist:hover {
-      background-color: #ff6b81;
-    }
-
-    .music-player {
-      display: flex;
-      align-items: center;
-      margin-top: 20px;
-    }
-
-    .music-player img {
-      width: 80px;
-      height: 80px;
-      border-radius: 10px;
-      margin-right: 20px;
-    }
-
-    .controls {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .controls button {
-      background-color: #ff4757;
-      border: none;
-      color: white;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-
-    .controls button:hover {
-      background-color: #ff6b81;
-    }
-
-    audio {
-      width: 300px;
-      background-color: black;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="playlist.html">Playlist</a></li>
-    </ul>
-  </nav>
-
-  <div class="container">
-    <h1>Song List</h1>
-    <div class="song-list" id="songList"></div>
-
-    <div class="music-player">
-      <img id="songArtwork" src="" alt="Song Artwork">
-      <div class="controls">
-        <button id="prevButton"><i class="fa-solid fa-backward"></i></button>
-        <button id="playPauseButton"><i class="fa-solid fa-play"></i></button>
-        <button id="nextButton"><i class="fa-solid fa-forward"></i></button>
-        <audio id="audioPlayer" controls></audio>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const songs = [
+[
     {
       "title": "Death Bed",
       "artist": "Powfu",
       "artwork": "https://samplesongs.netlify.app/album-arts/death-bed.jpg",
       "url": "https://samplesongs.netlify.app/Death%20Bed.mp3",
-      "id": "1"
+      "id": "1",
+      "category": "New"
     },
     {
       "title": "Bad Liar",
       "artist": "Imagine Dragons",
       "artwork": "https://samplesongs.netlify.app/album-arts/bad-liar.jpg",
       "url": "https://samplesongs.netlify.app/Bad%20Liar.mp3",
-      "id": "2"
+      "id": "2",
+      "category": "New"
     },
     {
       "title": "Faded",
       "artist": "Alan Walker",
       "artwork": "https://samplesongs.netlify.app/album-arts/faded.jpg",
       "url": "https://samplesongs.netlify.app/Faded.mp3",
-      "id": "3"
+      "id": "3",
+      "category": "New"
     },
     {
       "title": "Hate Me",
       "artist": "Ellie Goulding",
       "artwork": "https://samplesongs.netlify.app/album-arts/hate-me.jpg",
       "url": "https://samplesongs.netlify.app/Hate%20Me.mp3",
-      "id": "4"
+      "id": "4",
+      "category": "New"
     },
     {
       "title": "Solo",
       "artist": "Clean Bandit",
       "artwork": "https://samplesongs.netlify.app/album-arts/solo.jpg",
       "url": "https://samplesongs.netlify.app/Solo.mp3",
-      "id": "5"
+      "id": "5",
+      "category": "New"
     },
     {
       "title": "Without Me",
       "artist": "Halsey",
       "artwork": "https://samplesongs.netlify.app/album-arts/without-me.jpg",
       "url": "https://samplesongs.netlify.app/Without%20Me.mp3",
-      "id": "6"
+      "id": "6",
+      "category": "New"
     },
     {
       "title": "Aayi Nai",
       "artist": "Amit Bhatacharya",
       "artwork": "https://pagalfree.com/images/128Aayi%20Nai%20-%20Stree%202%20128%20Kbps.jpg",
       "url": "./songs/Aayi Nai - Stree 2 128 Kbps.mp3",
-      "id": "7"
+      "id": "7",
+      "category": "New"
     },
     {
       "title": "Mere Mehboob Mere Sanam",
       "artist": "Javed Akhtar",
       "artwork": "https://pagalfree.com/images/128Mere%20Mehboob%20Mere%20Sanam%20-%20Bad%20Newz%20128%20Kbps.jpg",
       "url": "./songs/Mere Mehboob Mere Sanam - Bad Newz 128 Kbps.mp3",
-      "id": "8"
+      "id": "8",
+      "category": "New"
     },
     {
       "title": "Khudaya",
       "artist": "Manoj Muntashir",
       "artwork": "https://pagalfree.com/images/128Khudaya%20-%20Sarfira%20128%20Kbps.jpg",
       "url": "./songs/Khudaya - Sarfira 128 Kbps.mp3",
-      "id": "9"
+      "id": "9",
+      "category": "New"
     },
     {
       "title": "Angaaron ",
       "artist": "Shreya Ghoshal",
       "artwork": "https://pagalfree.com/images/128Angaaron%20-%20Pushpa%202%20The%20Rule%20128%20Kbps.jpg",
       "url": "./songs/Angaaron - Pushpa 2 The Rule 128 Kbps.mp3",
-      "id": "10"
+      "id": "10",
+      "category": "New"
     },
     {
       "title": "Aaj Ki Raat ",
       "artist": "Amit Bhatacharya",
       "artwork": "https://pagalfree.com/images/128Aaj%20Ki%20Raat%20-%20Stree%202%20128%20Kbps.jpg",
       "url": "./songs/Aaj Ki Raat - Stree 2 128 Kbps.mp3",
-      "id": "11"
+      "id": "11",
+      "category": "New"
     },
     {
       "title": "Agar Ho Tum ",
       "artist": "Jubin Nautiyal",
       "artwork": "https://pagalfree.com/images/128Agar%20Ho%20Tum%20-%20Mr.%20And%20Mrs.%20Mahi%20128%20Kbps.jpg",
       "url": "./songs/Agar Ho Tum - Mr. And Mrs. Mahi 128 Kbps.mp3",
-      "id": "12"
+      "id": "12",
+      "category": "New"
     },
     {
       "title": "Pushpa",
       "artist": "Mika singh",
       "artwork": "https://pagalfree.com/images/128Pushpa%20Pushpa%20-%20Pushpa%202%20The%20Rule%20128%20Kbps.jpg",
       "url": "./songs/Pushpa Pushpa - Pushpa 2 The Rule 128 Kbps.mp3",
-      "id": "13"
+      "id": "13",
+      "category": "New"
     },
     {
       "title": "Ghagra",
       "artist": "Ila Arun",
       "artwork": "https://pagalfree.com/images/128Ghagra%20-%20Crew%20128%20Kbps.jpg",
       "url": "./songs/Ghagra - Crew 128 Kbps.mp3",
-      "id": "14"
+      "id": "14",
+      "category": "New"
     },
     {
       "title": "O mahi",
       "artist": "Arijit Singh",
       "artwork": "https://www.pagalworld.com.sb/siteuploads/thumb/sft138/68671_1.jpg",
       "url": "./songs/O Mahi O Mahi(PagalWorld.com.sb).mp3",
-      "id": "15"
+      "id": "15",
+      "category": "New"
     },
     {
       "title": "Millionaire",
       "artist": "Honey Singh",
       "artwork": "https://www.pagalworld.com.sb/siteuploads/thumb/sft145/72038_4.jpg",
       "url": "./songs/Millionaire(PagalWorld.com.sb).mp3",
-      "id": "16"
+      "id": "16",
+      "category": "New"
     },
     {
       "title": "Tumhare Hi Rahenge Hum",
       "artist": "Varun Jain",
       "artwork": "https://www.pagalworld.com.sb/siteuploads/thumb/sft144/71864_4.jpg",
       "url": "./songs/Tumhare Hi Rahenge Hum(PagalWorld.com.sb).mp3",
-      "id": "17"
+      "id": "17",
+      "category": "New"
     },
     {
       "title": "Khoobsurat",
       "artist": "Vishal Mistra",
       "artwork": "https://www.pagalworld.com.sb/siteuploads/thumb/sft144/71884_4.jpg",
       "url": "./songs/Khoobsurat(PagalWorld.com.sb).mp3",
-      "id": "18"
+      "id": "18",
+      "category": "New"
     },
     {
       "title": "Gulabi Sadi",
       "artist": "R Rathod",
       "artwork": "https://www.pagalworld.com.sb/siteuploads/thumb/sft142/70998_4.jpg",
       "url": "./songs/Gulabi Sadi Ani Lali(PagalWorld.com.sb).mp3",
-      "id": "19"
+      "id": "19",
+      "category": "New"
     },
     {
       "title": "Heeriye Heeriye Aa",
       "artist": "Arijit Singh",
       "artwork": "https://www.pagalworld.com.sb/siteuploads/thumb/sft143/71197_4.jpg",
       "url": "./songs/_Heeriye Heeriye Aa(PagalWorld.com.sb).mp3",
-      "id": "20"
+      "id": "20",
+      "category": "New"
     },
     
       {
@@ -304,223 +165,319 @@
         "artist": "Powfu",
         "artwork": "https://samplesongs.netlify.app/album-arts/death-bed.jpg",
         "url": "https://samplesongs.netlify.app/Death%20Bed.mp3",
-        "id": "21"
+        "id": "21",
+        "category": "New"
       },
       {
         "title": "Bad Liar",
         "artist": "Imagine Dragons",
         "artwork": "https://samplesongs.netlify.app/album-arts/bad-liar.jpg",
         "url": "https://samplesongs.netlify.app/Bad%20Liar.mp3",
-        "id": "22"
+        "id": "22",
+        "category": "New"
       },
       {
         "title": "Faded",
         "artist": "Alan Walker",
         "artwork": "https://samplesongs.netlify.app/album-arts/faded.jpg",
         "url": "https://samplesongs.netlify.app/Faded.mp3",
-        "id": "23"
+        "id": "23",
+        "category": "New"
       },
       {
         "title": "Hate Me",
         "artist": "Ellie Goulding",
         "artwork": "https://samplesongs.netlify.app/album-arts/hate-me.jpg",
         "url": "https://samplesongs.netlify.app/Hate%20Me.mp3",
-        "id": "24"
+        "id": "24",
+        "category": "New"
       },
       {
         "title": "Solo",
         "artist": "Clean Bandit",
         "artwork": "https://samplesongs.netlify.app/album-arts/solo.jpg",
         "url": "https://samplesongs.netlify.app/Solo.mp3",
-        "id": "25"
+        "id": "25",
+        "category": "New"
       },
       {
         "title": "Without Me",
         "artist": "Halsey",
         "artwork": "https://samplesongs.netlify.app/album-arts/without-me.jpg",
         "url": "https://samplesongs.netlify.app/Without%20Me.mp3",
-        "id": "26"
+        "id": "26",
+        "category": "New"
       },
       {
         "title": "Aayi Nai",
         "artist": "Amit Bhatacharya",
         "artwork": "https://pagalfree.com/images/128Aayi%20Nai%20-%20Stree%202%20128%20Kbps.jpg",
         "url": "./songs/Aayi Nai - Stree 2 128 Kbps.mp3",
-        "id": "27"
+        "id": "27",
+        "category": "New"
       },
       {
         "title": "Mere Mehboob Mere Sanam",
         "artist": "Javed Akhtar",
         "artwork": "https://pagalfree.com/images/128Mere%20Mehboob%20Mere%20Sanam%20-%20Bad%20Newz%20128%20Kbps.jpg",
         "url": "./songs/Mere Mehboob Mere Sanam - Bad Newz 128 Kbps.mp3",
-        "id": "28"
+        "id": "28",
+        "category": "New"
       },
       {
         "title": "Khudaya",
         "artist": "Manoj Muntashir",
         "artwork": "https://pagalfree.com/images/128Khudaya%20-%20Sarfira%20128%20Kbps.jpg",
         "url": "./songs/Khudaya - Sarfira 128 Kbps.mp3",
-        "id": "29"
+        "id": "29",
+        "category": "New"
       },
       {
         "title": "Angaaron ",
         "artist": "Shreya Ghoshal",
         "artwork": "https://pagalfree.com/images/128Angaaron%20-%20Pushpa%202%20The%20Rule%20128%20Kbps.jpg",
         "url": "./songs/Angaaron - Pushpa 2 The Rule 128 Kbps.mp3",
-        "id": "30"
+        "id": "30",
+        "category": "New"
       },
       {
         "title": "Aaj Ki Raat ",
         "artist": "Amit Bhatacharya",
         "artwork": "https://pagalfree.com/images/128Aaj%20Ki%20Raat%20-%20Stree%202%20128%20Kbps.jpg",
         "url": "./songs/Aaj Ki Raat - Stree 2 128 Kbps.mp3",
-        "id": "31"
+        "id": "31",
+        "category": "New"
       },
       {
         "title": "Agar Ho Tum ",
         "artist": "Jubin Nautiyal",
         "artwork": "https://pagalfree.com/images/128Agar%20Ho%20Tum%20-%20Mr.%20And%20Mrs.%20Mahi%20128%20Kbps.jpg",
         "url": "./songs/Agar Ho Tum - Mr. And Mrs. Mahi 128 Kbps.mp3",
-        "id": "32"
+        "id": "32",
+        "category": "New"
       },
       {
         "title": "Pushpa",
         "artist": "Mika singh",
         "artwork": "https://pagalfree.com/images/128Pushpa%20Pushpa%20-%20Pushpa%202%20The%20Rule%20128%20Kbps.jpg",
         "url": "./songs/Pushpa Pushpa - Pushpa 2 The Rule 128 Kbps.mp3",
-        "id": "33"
+        "id": "33",
+        "category": "New"
       },
       {
         "title": "Ghagra",
         "artist": "Ila Arun",
         "artwork": "https://pagalfree.com/images/128Ghagra%20-%20Crew%20128%20Kbps.jpg",
         "url": "./songs/Ghagra - Crew 128 Kbps.mp3",
-        "id": "34"
+        "id": "34",
+        "category": "New"
       },
       {
         "title": "O mahi",
         "artist": "Arijit Singh",
         "artwork": "https://www.pagalworld.com.sb/siteuploads/thumb/sft138/68671_1.jpg",
         "url": "./songs/O Mahi O Mahi(PagalWorld.com.sb).mp3",
-        "id": "35"
+        "id": "35",
+        "category": "New"
       },
       {
         "title": "Millionaire",
         "artist": "Honey Singh",
         "artwork": "https://www.pagalworld.com.sb/siteuploads/thumb/sft145/72038_4.jpg",
         "url": "./songs/Millionaire(PagalWorld.com.sb).mp3",
-        "id": "36"
+        "id": "36",
+        "category": "New"
       },
       {
         "title": "Tumhare Hi Rahenge Hum",
         "artist": "Varun Jain",
         "artwork": "https://www.pagalworld.com.sb/siteuploads/thumb/sft144/71864_4.jpg",
         "url": "./songs/Tumhare Hi Rahenge Hum(PagalWorld.com.sb).mp3",
-        "id": "37"
+        "id": "37",
+        "category": "New"
       },
       {
         "title": "Khoobsurat",
         "artist": "Vishal Mistra",
         "artwork": "https://www.pagalworld.com.sb/siteuploads/thumb/sft144/71884_4.jpg",
         "url": "./songs/Khoobsurat(PagalWorld.com.sb).mp3",
-        "id": "38"
+        "id": "38",
+        "category": "New"
       },
       {
         "title": "Gulabi Sadi",
         "artist": "R Rathod",
         "artwork": "https://www.pagalworld.com.sb/siteuploads/thumb/sft142/70998_4.jpg",
         "url": "./songs/Gulabi Sadi Ani Lali(PagalWorld.com.sb).mp3",
-        "id": "39"
+        "id": "39",
+        "category": "New"
       },
       {
         "title": "Heeriye Heeriye Aa",
         "artist": "Arijit Singh",
         "artwork": "https://www.pagalworld.com.sb/siteuploads/thumb/sft143/71197_4.jpg",
         "url": "./songs/_Heeriye Heeriye Aa(PagalWorld.com.sb).mp3",
-        "id": "40"
+        "id": "40",
+        "category": "New"
+      },
+      {
+        "title": "Ankhiyon Ke Jharokhon Se",
+        "artist": "Hemlata",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12801_4.jpg",
+        "url": "./songs/Ankhiyon-Ke-Jharokhon-Se(PagalWorld).mp3",
+        "id": "41",
+        "category": "Old"
+      },
+      {
+        "title": "Bin tere sanam",
+        "artist": "Udit Narayan",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12792_4.jpg",
+        "url": "./songs/Bin-Tere-Sanam(PagalWorld).mp3",
+        "id": "42",
+        "category": "Old"
+      },
+      {
+        "title": "Radha Kase Na Jale",
+        "artist": "Asha Bhosale",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12736_4.jpg",
+        "url": "./songs/Radha-Kaise-Na-Jale(PagalWorld).mp3",
+        "id": "43",
+        "category": "Old"
+      },
+      {
+        "title": "Aaja Nachale",
+        "artist": "Sunidhi Chouhan",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12693_4.jpg",
+        "url": "./songs/Aaja-Nachle(PagalWorld).mp3",
+        "id": "44",
+        "category": "Old"
+      },
+      {
+        "title": "Hame tumse Pyar hai kitna",
+        "artist": "Kishor kumar",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12697_4.jpg",
+        "url": "./songs/Hume-Tumse-Pyar-Kitna(PagalWorld).mp3",
+        "id": "45",
+        "category": "Old"
+      },
+      {
+        "title": "Pyar hua Ikrar hua",
+        "artist": "Lata Mangeshkar",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12820_4.jpg",
+        "url": "./songs/Pyar-Hua-Ikrar-Hua(PagalWorld).mp3",
+        "id": "46",
+        "category": "Old"
+      },
+      {
+        "title": "Chotisi Pyarisi",
+        "artist": "Udit Narayan",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12824_4.jpg",
+        "url": "./songs/Choti-Si-Pyari-Si-Nanhi-Si(PagalWorld).mp3",
+        "id": "47",
+        "category": "Old"
+      },
+      {
+        "title": "Churake dil mere",
+        "artist": "Anu Malik",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12680_4.jpg",
+        "url": "./songs/Chura-Ke-Dil-Mera(PagalWorld).mp3",
+        "id": "48",
+        "category": "Old"
+      },
+      {
+        "title": "Yeh wada raha",
+        "artist": "Kishor kumar",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12800_4.jpg",
+        "url": "./songs/Yeh-Vaada-Raha(PagalWorld).mp3",
+        "id": "49",
+        "category": "Old"
+      },
+      {
+        "title": "Ram Jane",
+        "artist": "Udit Narayan",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12815_4.jpg",
+        "url": "./songs/Ram-Jaane(PagalWorld).mp3",
+        "id": "50",
+        "category": "Old"
+      },
+      {
+        "title": "Ankhiyon Ke Jharokhon Se",
+        "artist": "Hemlata",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12801_4.jpg",
+        "url": "./songs/Ankhiyon-Ke-Jharokhon-Se(PagalWorld).mp3",
+        "id": "41",
+        "category": "Old"
+      },
+      {
+        "title": "Bin tere sanam",
+        "artist": "Udit Narayan",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12792_4.jpg",
+        "url": "./songs/Bin-Tere-Sanam(PagalWorld).mp3",
+        "id": "42",
+        "category": "Old"
+      },
+      {
+        "title": "Radha Kase Na Jale",
+        "artist": "Asha Bhosale",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12736_4.jpg",
+        "url": "./songs/Radha-Kaise-Na-Jale(PagalWorld).mp3",
+        "id": "43",
+        "category": "Old"
+      },
+      {
+        "title": "Aaja Nachale",
+        "artist": "Sunidhi Chouhan",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12693_4.jpg",
+        "url": "./songs/Aaja-Nachle(PagalWorld).mp3",
+        "id": "44",
+        "category": "Old"
+      },
+      {
+        "title": "Hame tumse Pyar hai kitna",
+        "artist": "Kishor kumar",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12697_4.jpg",
+        "url": "./songs/Hume-Tumse-Pyar-Kitna(PagalWorld).mp3",
+        "id": "45",
+        "category": "Old"
+      },
+      {
+        "title": "Pyar hua Ikrar hua",
+        "artist": "Lata Mangeshkar",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12820_4.jpg",
+        "url": "./songs/Pyar-Hua-Ikrar-Hua(PagalWorld).mp3",
+        "id": "46",
+        "category": "Old"
+      },
+      {
+        "title": "Chotisi Pyarisi",
+        "artist": "Udit Narayan",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12824_4.jpg",
+        "url": "./songs/Choti-Si-Pyari-Si-Nanhi-Si(PagalWorld).mp3",
+        "id": "47",
+        "category": "Old"
+      },
+      {
+        "title": "Churake dil mere",
+        "artist": "Anu Malik",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12680_4.jpg",
+        "url": "./songs/Chura-Ke-Dil-Mera(PagalWorld).mp3",
+        "id": "48",
+        "category": "Old"
+      },
+      {
+        "title": "Yeh wada raha",
+        "artist": "Kishor kumar",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12800_4.jpg",
+        "url": "./songs/Yeh-Vaada-Raha(PagalWorld).mp3",
+        "id": "49",
+        "category": "Old"
+      },
+      {
+        "title": "Ram Jane",
+        "artist": "Udit Narayan",
+        "artwork": "https://www.pagalworld.com.co/uploads/thumb/sft26/12815_4.jpg",
+        "url": "./songs/Ram-Jaane(PagalWorld).mp3",
+        "id": "50",
+        "category": "Old"
       }
-    
-  ]
-
-    const songList = document.getElementById('songList');
-    const audioPlayer = document.getElementById('audioPlayer');
-    const playPauseButton = document.getElementById('playPauseButton');
-    const prevButton = document.getElementById('prevButton');
-    const nextButton = document.getElementById('nextButton');
-    const songArtwork = document.getElementById('songArtwork');
-
-    let currentIndex = 0;
-
-    // Function to display songs in the song list
-    function displaySongs() {
-      songs.forEach((song, index) => {
-        const songCard = document.createElement('div');
-        songCard.classList.add('song-card');
-        
-        songCard.innerHTML = `
-          <img src="${song.artwork}" alt="${song.title}">
-          <h3>${song.title}</h3>
-          <p>${song.artist}</p>
-          <button class="add-to-playlist">Add to Playlist</button>
-        `;
-
-        // Play song on card click
-        songCard.addEventListener('click', () => playSong(index));
-
-        // Prevent play when "Add to Playlist" is clicked
-        songCard.querySelector('.add-to-playlist').addEventListener('click', (e) => {
-          e.stopPropagation(); // Prevents playing the song
-          addToPlaylist(song);
-        });
-
-        songList.appendChild(songCard);
-      });
-    }
-
-    // Function to play a song
-    function playSong(index) {
-      currentIndex = index;
-      const song = songs[currentIndex];
-      audioPlayer.src = song.url;
-      songArtwork.src = song.artwork;
-      audioPlayer.play();
-      playPauseButton.textContent = "Pause";
-    }
-
-    // Function to handle play/pause button
-    playPauseButton.addEventListener('click', () => {
-      if (audioPlayer.paused) {
-        audioPlayer.play();
-        playPauseButton.textContent = "Pause";
-      } else {
-        audioPlayer.pause();
-        playPauseButton.textContent = "Play";
-      }
-    });
-
-    // Next and Previous song functionality
-    nextButton.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % songs.length;
-      playSong(currentIndex);
-    });
-
-    prevButton.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + songs.length) % songs.length;
-      playSong(currentIndex);
-    });
-
-    // Function to add a song to the playlist
-    function addToPlaylist(song) {
-      const userPlaylist = JSON.parse(localStorage.getItem('playlist')) || [];
-      if (!userPlaylist.some(s => s.id === song.id)) {
-        userPlaylist.push(song);
-        localStorage.setItem('playlist', JSON.stringify(userPlaylist));
-        alert(`${song.title} has been added to your playlist.`);
-      }
-    }
-
-    // Initial display of songs
-    displaySongs();
-  </script>
-</body>
-</html>
+]
