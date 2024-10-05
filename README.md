@@ -37,6 +37,7 @@ The songs.json file contains the list of songs available in the app. Each song o
   },
   {
     "title": "Bad Liar",
+    
     "artist": "Imagine Dragons",
     "artwork": "https://samplesongs.netlify.app/album-arts/bad-liar.jpg",
     "url": "https://samplesongs.netlify.app/Bad%20Liar.mp3",
