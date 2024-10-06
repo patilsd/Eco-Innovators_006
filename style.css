@@ -250,6 +250,8 @@ a {
   }
 }
 
+
+
 /* Small screens (phones) */
 @media (max-width: 768px) {
   .footer-upper {
@@ -295,4 +297,12 @@ a {
   color: white;
   font-weight: bold;
   font-size: 30px;
+}
+
+.footer_icons {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  /* border: 1px solid #fff; */
 }
