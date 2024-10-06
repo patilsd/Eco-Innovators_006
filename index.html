@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Melody</title>
+  <link rel="stylesheet" href="song.css" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" /> -->
+  <script src="https://kit.fontawesome.com/8b6c95fcc2.js" crossorigin="anonymous"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
+    integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <ul>
+    <li>
+      <a href="index.html"><img src="project.png" /></a>
+    </li>
+    <li>
+      <h1>Melody: The Heartbeat of Music</h1>
+    </li>
+
+    <div>
+      <li id="login"><a href="login.html">Login</a></li>
+      <li id="signup"><a href="signup.html">SignUp</a></li>
+
+      <li id="Playlist_btn" onclick="addSongs()">
+        <a href="Playlist.html" id="Play">Your Playlist</a>
+      </li>
+
+      <li id="logout" onclick="logout_data()">
+        <a href="index.html" id="log">LogOut</a>
+      </li>
+    </div>
+  </ul>
+  <div id="songs"></div>
+  <div id="pop">
+    <div id="content">
+      <p id="popupTitle"></p>
+      <img id="songImage" src="" />
+      <br />
+      <audio controls autoplay class="audio_" id="myaudio">
+        <!-- <source src="${songs[elem].url}" type="audio/mpeg">
+      <source src="${songs[elem].url}" type="audio/mp3">
+      Your browser does not support the audio element. -->
+      </audio>
+      <br />
+      <div id="controls">
+        <!-- <button onclick="previous(${elem})">prev</button>
+      <button onclick="next(${elem})">next</button> -->
+      </div>
+
+      <br />
+      <i class="fa fa-close" style="font-size: 48px; color: red; cursor: pointer" onclick="pop_close()"></i>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-upper">
+      <div class="footer_parts">
+        <h3>Company</h3>
+        <p>About</p>
+        <p>Jobs</p>
+        <p>For the Record</p>
+      </div>
+      <div class="footer_parts">
+        <h3>Communities</h3>
+        <p>Developers</p>
+        <p>Advertising</p>
+        <p>Investors</p>
+        <p>Vendors</p>
+      </div>
+      <div class="footer_parts">
+        <h3>Useful links</h3>
+        <p>Support</p>
+        <p>Free Mobile App</p>
+      </div>
+      <div class="footer_parts">
+        <h3>Our Plans</h3>
+        <p>Premium Individual</p>
+        <p>Premium Duo</p>
+        <p>Premium Family</p>
+        <p>Premium Student</p>
+      </div>
+      <div class="footer_icons">
+        <i class="fa-brands fa-instagram" style="color: #ffffff"></i>
+        <i class="fa-brands fa-twitter" style="color: #ffffff"></i>
+        <i class="fa-brands fa-youtube" style="color: #ffffff"></i>
+        <i class="fa-brands fa-facebook" style="color: #ffffff"></i>
+      </div>
+    </div>
+  </footer>
+</body>
+<script src="home.js"></script>
+<script src="script.js"></script>
+
+</html>
