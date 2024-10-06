@@ -56,8 +56,10 @@ ul div {
   font-weight: 550;
 }
 
-#logout {
+#logout,
+#Playlist_btn {
   display: none;
+  font-size: 12px;
   color: white;
 }
 
@@ -131,89 +133,52 @@ a {
   text-align: center;
 }
 
-/* Responsive Design for Different Screen Sizes */
-
-/* Large screens (desktops, laptops) */
-@media (min-width: 1024px) {
-  ul h1 {
-    font-size: 32px;
-  }
-
-  ul li a img {
-    width: 140px;
-  }
-
-  #login,
-  #signup {
-    font-size: 18px;
-    padding: 12px 24px;
-  }
-}
-
-/* Medium screens (tablets) */
-@media (max-width: 1024px) {
-  ul {
-    padding: 10px 15px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  ul li a img {
-    width: 100px;
-  }
-
-  #login,
-  #signup {
-    padding: 10px 18px;
-  }
-}
-
-/* Small screens (phones) */
+/* Responsive styling */
 @media (max-width: 768px) {
   ul {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  ul li a img {
-    width: 80px;
-    margin-bottom: 10px;
-  }
-
-  h1 {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-
-  #login,
-  #signup {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  button {
-    width: 100%;
+    /* Stack items vertically on small screens */
     padding: 10px;
+  }
+
+  ul h1 {
+    font-size: 24px;
+    /* Smaller title */
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  ul li:first-child img {
+    width: 50px;
+    /* Smaller logo */
+  }
+
+  ul div {
+    width: 100%;
+    /* Stack login/signup horizontally */
+    justify-content: space-around;
+  }
+
+  li a {
+    padding: 10px 12px;
+    /* Reduce padding for smaller links */
   }
 }
 
-/* Extra small screens (very small phones) */
 @media (max-width: 480px) {
-  ul li a img {
-    width: 60px;
+  ul {
+    padding: 5px;
   }
 
-  h1 {
-    font-size: 18px;
+  ul h1 {
+    font-size: 20px;
+    /* Even smaller title */
   }
 
-  #login,
-  #signup {
-    padding: 8px 12px;
+  li a {
     font-size: 14px;
+    /* Smaller link text */
+    padding: 8px;
   }
 }
 
@@ -224,6 +189,11 @@ a {
   color: #fff;
   background-color: black;
   padding: 30px;
+  text-decoration: none;
+}
+
+.footer_parts a {
+  text-decoration: none;
 }
 
 .footer-upper .footer_parts h3 {

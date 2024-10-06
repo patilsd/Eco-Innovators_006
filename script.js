@@ -1,104 +1,203 @@
+const style = document.createElement('style');
+style.textContent = `
+  .add-to-playlist {
+    background-color: #ff4757; /* Orange color */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    margin-right:10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;  /* Relative within its song card */
+    display: inline-block; /* Inline block for better button shape */
+    font-size: 14px;
+    height: 40px;
+    transition: background-color 0.3s ease; /* Add hover effect */
+  }
+
+  .add-to-playlist:hover {
+    background-color: #ff6b81; /* Darker orange on hover */
+  }
+`;
+document.head.appendChild(style);
+
 var songs = [];
-console.log(songs);
+var currentSongIndex = 0; // Track the currently playing song index
 
+// Load songs from song.json and handle errors
 async function loadSongs() {
-  songs = await fetch("song.json").then((v) => v.json());
-  start();
+  try {
+    const response = await fetch("song.json");
+    if (!response.ok) throw new Error("Failed to fetch songs");
+    songs = await response.json();
+    start();
+  } catch (error) {
+    console.error('Error loading songs:', error);
+    alert('Unable to load songs, please try again later.');
+  }
 }
 
-async function start() {
-  let song = document.getElementById("songs");
-  song.innerHTML = "";
+// Function to render the songs
+function start() {
+  let songContainer = document.getElementById("songs");
+  songContainer.innerHTML = "";
 
-  /* <audio controls class="audio_">
-  <source src="${elem.url}" type="audio/mpeg">
-  <source src="${elem.url}" type="audio/mp3">
-  Your browser does not support the audio element.
-</audio> */
+  if (songs.length === 0) {
+    songContainer.innerHTML = '<p>No songs available.</p>';
+    return;
+  }
 
-  songs.map((elem) => {
-    song.innerHTML += `        <div>
-            <p>${elem.title}</p>
-            <p>${elem.artist}</p>
-            <img src="${elem.artwork}">
-            <br>
-            
+  // Loop through songs and dynamically create HTML structure
+  songs.forEach((elem, index) => {
+    console.log("Song ID: ", elem.id); // Debug line
 
-<i class="fa fa-play" aria-hidden="true" style="
-        font-size: xx-large;
-        padding-top: 23%;
-        cursor: pointer;
-        color:white;
-    " onclick="popup(${elem.id - 1})"></i>
-        `;
+    // Conditionally render the "Add To Playlist" button if user is logged in
+    const addToPlaylistButton = authToken
+      ? `<button class="add-to-playlist" data-id="${elem.id}">Add To PlayList</button>`
+      : ''; // No button if user isn't logged in
+
+    const songCard = `
+      <div class="song-card">
+        <p>${elem.title}</p>
+        <p>${elem.artist}</p>
+        <img src="${elem.artwork}" alt="Artwork">
+        <br>
+        ${addToPlaylistButton}
+        <i class="fa fa-play" aria-hidden="true" style="font-size: xx-large; padding-top: 10%; cursor: pointer; color:white;" onclick="popup(${index})"></i>
+      </div>`;
+
+    songContainer.innerHTML += songCard;
   });
-}
-function popup(elem) {
-  let hasConfirmed = false;
-  let pop = document.getElementById("pop");
-  pop.style.display = "block";
-  document.getElementById(
-    "popupTitle"
-  ).innerHTML = `${songs[elem].title} by ${songs[elem].artist}`;
-  document.getElementById("songImage").src = songs[elem].artwork;
-  document.getElementById("myaudio").src = songs[elem].url;
-  document.getElementById("controls").innerHTML = `
-     <button onclick="previous(${elem})">prev</button>
-   <button onclick="next(${elem})">next</button>
-  `;
+
+  // Attach event listeners to each "Add to Playlist" button if user is logged in
   if (authToken) {
-    document.getElementById("myaudio").ontimeupdate = function () {
-      const duration = document.getElementById("myaudio").duration;
-      const currentTime = document.getElementById("myaudio").currentTime;
-      if (currentTime >= duration) {
-        document.getElementById("myaudio").pause();
-        next(elem);
-      }
-    };
+    document.querySelectorAll('.add-to-playlist').forEach(button => {
+      button.addEventListener('click', (e) => {
+        console.log("Add to Playlist button clicked!"); // Debug line
+        e.stopPropagation(); // Prevents playing the song
+        const songId = e.target.getAttribute('data-id');
+        console.log("Song ID to add:", songId); // Debug line
+
+        // Check if songId is valid
+        if (!songId) {
+          console.error("Song ID is missing");
+          alert("Error: Song ID is missing.");
+          return;
+        }
+
+        // Find the song to add
+        const songToAdd = songs.find(s => s.id === songId); // Compare as strings
+        console.log("Song to add:", songToAdd); // Debug line
+
+        // Check if songToAdd is found
+        if (!songToAdd) {
+          console.error(`Song with ID ${songId} not found in songs array.`);
+          alert("Error: Song not found.");
+          return;
+        }
+
+        addToPlaylist(songToAdd);
+      });
+    });
+  }
+}
+
+// Popup to play song
+function popup(elemIndex) {
+  const pop = document.getElementById("pop");
+  const song = songs[elemIndex];
+  currentSongIndex = elemIndex;  // Set the current song index
+  pop.style.display = "block";
+  pop.innerHTML = `
+    <div id="content">
+      <p>${song.title} by ${song.artist}</p>
+      <img src="${song.artwork}" alt="Artwork">
+      <br>
+      <audio controls class="audio_" id="myaudio" autoplay>
+        <source src="${song.url}" type="audio/mpeg">
+        <source src="${song.url}" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <br>
+      <button onclick="previous(${elemIndex})">Prev</button>
+      <button onclick="next(${elemIndex})">Next</button>
+      <br>
+      <i class="fa fa-close" style="font-size:48px;color:red; cursor:pointer" onclick="pop_close()"></i>
+    </div>`;
+
+  const audio = document.getElementById("myaudio");
+  audio.addEventListener('ended', nextAutoPlay);  // Play next song automatically when current one ends
+
+  if (!authToken) {
+    restrictPlayback();
+  }
+}
+
+// Play the next song automatically after the current song ends
+function nextAutoPlay() {
+  if (currentSongIndex === songs.length - 1) {
+    currentSongIndex = 0;  // Loop back to the first song
   } else {
-    console.log(document.getElementById("myaudio"), "dkd");
-    document.getElementById("myaudio").ontimeupdate = () => {
-      const duration = document.getElementById("myaudio").duration;
-      const limit = (duration * 10) / 100;
-      const currentTime = document.getElementById("myaudio").currentTime;
-      console.log(duration, " ", limit, " ", currentTime);
-      if (currentTime >= limit && !hasConfirmed) {
-        document.getElementById("myaudio").pause();
-        hasConfirmed = true;
-        // document.getElementById("myaudio").ontimeupdate = null;
-        const ans = confirm(
-          "you can not play more than this do you want to login"
-        );
-        console.log("ans", ans);
-        if (ans) {
+    currentSongIndex++;
+  }
+  popup(currentSongIndex);  // Play the next song in the list
+}
+
+// Restrict audio playback for non-authenticated users
+function restrictPlayback() {
+  const audio = document.getElementById("myaudio");
+  audio.onloadedmetadata = function () {
+    const duration = audio.duration;
+    const limit = (duration * 10) / 100;
+    audio.ontimeupdate = function () {
+      if (audio.currentTime >= limit) {
+        audio.pause();
+        if (confirm("You cannot play more than 10%. Do you want to login?")) {
           window.location.href = "login.html";
-        } else {
-          setTimeout(() => {
-            hasConfirmed = false;
-          }, 1000);
-          // hasConfirmed = false;
         }
       }
     };
-  }
+  };
 }
+
 function pop_close() {
   let audio = document.getElementById("myaudio");
   audio.pause();
   let pop = document.getElementById("pop");
   pop.style.display = "none";
 }
-function previous(elem) {
-  if (elem == 0) elem = songs.length - 1;
-  else elem--;
-  console.log(elem);
-  console.log(songs[elem].url);
-  popup(elem);
-}
-function next(elem) {
-  if (elem == songs.length - 1) elem = 0;
-  else elem++;
-  popup(elem);
+
+function previous(elemIndex) {
+  if (elemIndex === 0) elemIndex = songs.length - 1;
+  else elemIndex--;
+  popup(elemIndex);
 }
 
+function next(elemIndex) {
+  if (elemIndex === songs.length - 1) elemIndex = 0;
+  else elemIndex++;
+  popup(elemIndex);
+}
+
+// Function to add song to the playlist
+function addToPlaylist(song) {
+  if (!song) {
+    alert("Error: Song not found.");
+    return;
+  }
+
+  const userPlaylist = JSON.parse(localStorage.getItem('playlist')) || [];
+
+  // Ensure both IDs are compared as strings
+  if (!userPlaylist.some(s => s.id === song.id.toString())) {
+    userPlaylist.push(song);
+    localStorage.setItem('playlist', JSON.stringify(userPlaylist));
+    alert(`${song.title} has been added to your playlist.`);
+  } else {
+    alert(`${song.title} is already in your playlist.`);
+  }
+}
+
+// Call loadSongs to initialize
 loadSongs();

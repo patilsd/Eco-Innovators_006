@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player - Playlist</title>
+    <script src="https://kit.fontawesome.com/0161e8f976.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #222;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: inline-block;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container>h1 {
+            color: rgb(222, 136, 189);
+        }
+
+        .song-list,
+        .playlist {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .song-card {
+            background-color: #222;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            width: 200px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .song-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .song-card h3,
+        .song-card p {
+            margin: 10px 0;
+        }
+
+        .music-player {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            box-shadow: rgba(199, 113, 149, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+            flex-wrap: wrap;
+        }
+
+        .music-player img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            margin-right: 20px;
+            margin-left: 100px;
+        }
+
+        .controls {
+            margin-left: 100px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .controls button {
+            background-color: #ff4757;
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .controls button:hover {
+            background-color: #ff6b81;
+        }
+
+        audio {
+            margin-left: 100px;
+            width: 500px;
+        }
+
+        .add-to-playlist,
+        .remove-from-playlist {
+            background-color: #ff4757;
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .add-to-playlist:hover,
+        .remove-from-playlist:hover {
+            background-color: #ff6b81;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .controls {
+                margin-left: 50px;
+                gap: 5px;
+            }
+
+            .music-player {
+                padding: 10px;
+            }
+
+            .music-player img {
+                margin-left: 20px;
+                margin-right: 10px;
+            }
+
+            audio {
+                width: 300px;
+                margin-left: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul li {
+                display: block;
+                margin-right: 0;
+                padding: 5px;
+            }
+
+            .music-player {
+                flex-direction: column;
+                padding: 10px;
+                text-align: center;
+            }
+
+            .music-player img {
+                margin-left: 0;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .controls {
+                justify-content: center;
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            audio {
+                width: 200px;
+                margin-left: 0;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .music-player img {
+                width: 80px;
+                height: 80px;
+            }
+
+            audio {
+                width: 700px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Songlist</a></li>
+            <li><a href="Playlist.html">Playlist</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Your Playlist</h1>
+        <div class="playlist" id="playlist"></div>
+
+
+        <div class="music-player">
+            <img id="songArtwork" src="" alt="Song Artwork">
+            <div class="controls">
+                <button id="prevButton"><i class="fa-solid fa-backward"></i></button>
+                <button id="playPauseButton"><i class="fa-solid fa-play"></i></button>
+                <button id="nextButton"><i class="fa-solid fa-forward"></i></button>
+                <audio id="audioPlayer" controls></audio>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const playlist = JSON.parse(localStorage.getItem('playlist')) || [];
+        const playlistContainer = document.getElementById('playlist');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playPauseButton = document.getElementById('playPauseButton');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const songArtwork = document.getElementById('songArtwork');
+
+        let currentSongIndex = 0;
+        let isPlaying = false;
+
+        // Function to display the playlist
+        function displayPlaylist() {
+            playlistContainer.innerHTML = ''; // Clear any previous content
+            playlist.forEach((song, index) => {
+                const songCard = document.createElement('div');
+                songCard.classList.add('song-card');
+
+                songCard.innerHTML = `
+          <img src="${song.artwork}" alt="${song.title}">
+          <h3>${song.title}</h3>
+          <p>${song.artist}</p>
+          <button class="remove-from-playlist">Remove from Playlist</button>
+        `;
+
+                // Play song when the song card is clicked
+                songCard.addEventListener('click', (e) => {
+                    if (!e.target.classList.contains('remove-from-playlist')) {
+                        currentSongIndex = index;
+                        playSong(song.url, song.artwork);
+                    }
+                });
+
+                // Remove song when "Remove from Playlist" is clicked
+                songCard.querySelector('.remove-from-playlist').addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent playing the song when clicking remove
+                    removeFromPlaylist(song.id);
+                });
+
+                playlistContainer.appendChild(songCard);
+            });
+        }
+
+        // Function to play a song from the playlist
+        function playSong(url, artwork) {
+            audioPlayer.src = url;
+            songArtwork.src = artwork;
+            audioPlayer.play();
+            isPlaying = true;
+            playPauseButton.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        }
+
+        // Function to toggle play/pause
+        playPauseButton.addEventListener('click', () => {
+            if (isPlaying) {
+                audioPlayer.pause();
+                isPlaying = false;
+                playPauseButton.innerHTML = '<i class="fa-solid fa-play"></i>';
+            } else {
+                audioPlayer.play();
+                isPlaying = true;
+                playPauseButton.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            }
+        });
+
+        // Function to play the next song
+        nextButton.addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex + 1) % playlist.length;
+            playSong(playlist[currentSongIndex].url, playlist[currentSongIndex].artwork);
+        });
+
+        // Function to play the previous song
+        prevButton.addEventListener('click', () => {
+            currentSongIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
+            playSong(playlist[currentSongIndex].url, playlist[currentSongIndex].artwork);
+        });
+
+        // Function to remove a song from the playlist
+        function removeFromPlaylist(songId) {
+            const updatedPlaylist = playlist.filter(song => song.id !== songId);
+            localStorage.setItem('playlist', JSON.stringify(updatedPlaylist));
+            location.reload(); // Reload page to reflect changes in playlist
+        }
+
+        // Initial display of playlist
+        displayPlaylist();
+    </script>
+
+
+</body>
+
+</html>
