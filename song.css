@@ -1,0 +1,36 @@
+body {
+  background-image: linear-gradient(black, rgb(43, 40, 40));
+}
+
+#songs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#songs > div {
+  font-weight: bold;
+  background-color: rgb(59, 56, 56);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(138, 129, 129, 0.1);
+  width: 200px;
+  text-align: center;
+  color: white;
+}
+
+#songs > div > img {
+  margin-bottom: 10px;
+  width: 200px;
+  height: 250px;
+  border-radius: 5%;
+}
+
+#songs > div > audio {
+  width: 200px;
+  height: 100px;
+}
+
+/*nav*/
