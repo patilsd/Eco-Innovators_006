@@ -20,7 +20,7 @@ Melody/
 ├── styles.css            # Stylesheet for the app's layout and design
 ├── script.js             # Main JavaScript file to control the app's behavior
 ├── songs.json            # JSON file storing song details
-├── images/               # Folder containing album artwork and icons
+├── songs/               # Folder containing album artwork and icons
 └── README.md             # Project documentation (this file)
 
 📜 Song Data (songs.json)
